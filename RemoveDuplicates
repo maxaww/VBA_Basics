@@ -1,0 +1,23 @@
+'this will remove any duplicate values you have based on column value. The num parameter is which sheet you are working on'
+Sub removeDup(ByVal num As Integer)
+    'this deletes any open spaces with no data. Only uncomment if needed'
+    'Selection.SpecialCells(xlCellTypeBlanks).EntireRow.Delete'
+    Dim i As Integer 'set to Long if your file has over 10k of data or you recieve an out of range error'
+    Dim d As String
+    Dim n As String
+    Dim L As Long
+    L = Worksheets(num).Range("A1").SpecialCells(xlCellTypeLastCell).Row
+    i = 'if headers, set to 2. If no headers, set to 1'
+    Do While i <= L
+        If Cells(i, 'chosen column1') = d And Cells(i, 'chosen column2') = n Then
+            Rows(i).EntireRow.Delete
+            L = L - 1
+            Debug.Print (i)
+        Else
+            d = Cells(i, 'chosen column1')
+            n = Cells(i, 'chosen column2')
+            i = i + 1
+            Debug.Print(i)
+        End If
+    Loop
+End Sub
