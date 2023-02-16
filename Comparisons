@@ -1,0 +1,10 @@
+'this compares 2 values, and is not case sensitive (meaning HHH is equal to hhh). If the value is larger we get 1, if less we get -1. Refer for comparison and binary search'
+Sub Match()
+    Dim f As Integer
+    f = StrComp('value1', 'value2', vbTextCompare)
+    If f = 1 Or f = -1 Then
+      'what you want if the values are different'
+    ElseIf f = 0 Then
+      'what you want if values are the same'
+    End If
+End Sub
