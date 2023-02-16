@@ -1,0 +1,29 @@
+'This goes through and removes unwanted characters from a string representing the date. Use as reference for editing cell values. This is O(n).'
+'the num parameter is which sheet you want to work on'
+Sub fixDates(Byval num As Integer)
+    Dim i As Long
+    Dim L As Long
+    L = Worksheets(num).Range("A1").SpecialCells(xlCellTypeLastCell).Row
+    i = 'set to 1 if no headers, 2 if headers'
+    Do While i <= L
+        Worksheets(num).Cells(i, 'column chosen') = Mid(Cells(i, 'column chosen'), 'where you want the value to begin', 'where you want the value to end') & Mid(Cells(i, 4), 24, 5)
+        Debug.Print (Cells(i, 'column chosen'))
+        i = i + 1
+    Loop
+End Sub
+
+'this is a way to delete all blank values in a file. num is the sheet you are working on'
+Sub deleteBlanks(ByVal num As Integer)
+    Dim i As Integer
+    Dim L As Long
+    i = 1
+    L =  Worksheets(num).Range("A1").SpecialCells(xlCellTypeLastCell).Row
+    Do While i <= L
+        If IsEmpty(Worksheets(s).Cells(i, 'chosen column')) = True Then
+            Worksheets(s).Rows(i).EntireRow.Delete
+            L = L - 1
+        Else
+            i = i + 1
+        End If
+    Loop
+End Sub
